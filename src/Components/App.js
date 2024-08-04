@@ -5,7 +5,7 @@ import TableRow from './TableRow';
 class App extends React.Component {
   state = {
     names: [], // Initialize state as an array
-    checkedItems: {}, // Object to hold the checked status of each checkbox
+    tableRows: [] // Initialize tableRows as an array to store TableRow components
   };
 
   // Callback function to handle data received from the child component
@@ -16,48 +16,39 @@ class App extends React.Component {
     }));
   };
 
-  // Handle checkbox change
-  handleCheckboxChange = (index) => {
+  // Function to add a new TableRow component
+  addTableRow = () => {
     this.setState((prevState) => ({
-      checkedItems: {
-        ...prevState.checkedItems,
-        [index]: !prevState.checkedItems[index], // Toggle the checked status
-      },
+      tableRows: [...prevState.tableRows, { id: prevState.tableRows.length }]
     }));
   };
 
-  // Get indices of checked checkboxes
-  getCheckedIndices = () => {
-    const { checkedItems } = this.state;
-    return Object.keys(checkedItems).filter(index => checkedItems[index]);
-  };
-
   render() {
-    const { names, checkedItems } = this.state;
-    const checkedIndices = this.getCheckedIndices();
+    const { names, tableRows } = this.state;
 
     return (
       <div>
         <Names parentCallback={this.handleCallback} />
+        
         <table>
           <thead>
             <tr>
               <th></th>
+              <th></th>
               {names.map((name, index) => (
                 <th key={index}>
-                  {name} <br/>
-                  <input
-                    type="checkbox"
-                    id={index}
-                    checked={!!checkedItems[index]} // Set the checkbox checked state
-                    onChange={() => this.handleCheckboxChange(index)}
-                  />
+                  {name}
                 </th>
               ))}
             </tr>
-            <TableRow checked={checkedIndices} ></TableRow>
           </thead>
+          <tbody>
+            {tableRows.map((row) => (
+              <TableRow key={row.id} names={names} />
+            ))}
+          </tbody>
         </table>
+        <button onClick={this.addTableRow}>Add Table Row</button>
       </div>
     );
   }
