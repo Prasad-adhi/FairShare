@@ -22,7 +22,7 @@ class Names extends React.Component {
     return (
       <div className='flex flex-col items-center justify-center'>
         <form onSubmit={this.onTrigger} className="flex flex-row items-center space-x-2">
-          <label className='font-bold'>Payers:</label>
+          <label className='font-bold dark:text-white'>Payers:</label>
           <input
             type="text"
             name="myname"
@@ -31,7 +31,7 @@ class Names extends React.Component {
             onChange={this.handleChange}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
-          <input type="submit" value="Submit" className="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"/>
+          <input type="submit" value="Submit" className="h-10 px-5 m-2 text-indigo-100 dark:text-black dark:bg-indigo-300 transition ease-in-out delay-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"/>
           <br />
           <br />
         </form>

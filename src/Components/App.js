@@ -61,13 +61,13 @@ class App extends React.Component {
     const { names, tableRows, totals } = this.state;
 
     return (
-      <div>
+      <div className='bg-fuchsia-100 min-h-screen dark:bg-slate-800'>
         <Header />
         <Payee />
         <Names parentCallback={this.handleCallback} />
         
-        <table className='min-w-full text-center text-sm font-light text-surface dark:text-white'>
-          <thead className='border-b border-neutral-200 font-medium dark:border-white/10'>
+        <table className='min-w-full text-center text-1xl font-light text-surface dark:text-white'>
+          <thead className='font-medium dark:border-white/10'>
             <tr>
               <th></th>
               <th></th>
@@ -76,15 +76,15 @@ class App extends React.Component {
               ))}
             </tr>
           </thead>
-          <tbody className='border-separate border-2'>
+          <tbody>
             {tableRows.map((row) => (
               <TableRow key={row.id} id={row.id} names={names} onChange={this.handleRowChange} />
             ))}
             {tableRows.length > 0 && <TotalRow totals={totals} />}
           </tbody>
         </table>
-        <button onClick={this.addTableRow} className="h-10 px-5 m-2 text-indigo-100 transition ease-in-out delay-150 rounded-lg bg-indigo-700 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Add Table Row</button>
-        <button onClick={this.calculateTotals} className="h-10 px-5 m-2 text-indigo-100 transition ease-in-out delay-150 rounded-lg bg-indigo-700 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Calculate Totals</button>
+        <button onClick={this.addTableRow} className="h-10 px-5 m-2 text-indigo-100 dark:text-black transition ease-in-out delay-150 rounded-lg bg-indigo-700 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300 dark:bg-indigo-300">Add Table Row</button>
+        <button onClick={this.calculateTotals} className="h-10 px-5 m-2 text-indigo-100 dark:text-black transition ease-in-out delay-150 rounded-lg bg-indigo-700 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300 dark:bg-indigo-300">Calculate Totals</button>
       </div>
     );
   }

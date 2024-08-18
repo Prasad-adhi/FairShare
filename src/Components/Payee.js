@@ -2,7 +2,7 @@ export default function Payee(){
     return (
         <div className='flex flex-col items-center justify-center'>
             <div className="flex flex-row items-center justify-center">
-                <label className='font-bold'>Payee:</label>
+                <label className='font-bold dark:text-white'>Payee:</label>
                 <input
                 type="text"
                 name="myname"
