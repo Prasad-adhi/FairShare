@@ -20,19 +20,18 @@ class Names extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onTrigger}>
+      <div className='flex flex-col items-center justify-center'>
+        <form onSubmit={this.onTrigger} className="flex flex-row items-center space-x-2">
+          <label className='font-bold'>Payers:</label>
           <input
             type="text"
             name="myname"
             placeholder="Enter Name"
             value={this.state.name}
             onChange={this.handleChange}
-            class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
-          <br />
-          <br />
-          <input type="submit" value="Submit" class="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"/>
+          <input type="submit" value="Submit" className="h-10 px-5 m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"/>
           <br />
           <br />
         </form>

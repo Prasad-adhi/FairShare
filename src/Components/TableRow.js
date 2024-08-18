@@ -66,6 +66,7 @@ class TableRow extends React.Component {
             placeholder='Enter product'
             value={product}
             onChange={this.handleProductChange}
+            class = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </th>
         <th>
@@ -75,6 +76,7 @@ class TableRow extends React.Component {
             onChange={this.handleChange}
             onBlur={this.handleBlur}
             value={values[0]}
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </th>
         {names.map((_, index) => (
@@ -83,6 +85,7 @@ class TableRow extends React.Component {
               type="checkbox"
               checked={checkedItems[index]}
               onChange={() => this.handleCheckboxChange(index)}
+              className = "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-l-lg focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             {checkedItems[index] ? values[index + 1] : ""}
           </th>
