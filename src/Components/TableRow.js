@@ -46,10 +46,28 @@ class TableRow extends React.Component {
     this.setState((prevState) => {
       const updatedCheckedItems = [...prevState.checkedItems];
       updatedCheckedItems[index] = !updatedCheckedItems[index];
+  
+      // Count the number of checked items
       const trueCount = updatedCheckedItems.filter(item => item).length;
+  
+      // Calculate the split value based on the number of checked items
       const splitValue = trueCount > 0 ? (parseFloat(prevState.values[0]) / trueCount).toFixed(2) : 0;
-      const updatedValues = prevState.values.map((v, i) => (i > 0 && updatedCheckedItems[i - 1] ? splitValue : v));
+  
+      // Update the values array based on the checked state of each checkbox
+      const updatedValues = prevState.values.map((v, i) => {
+        if (i === 0) {
+          return prevState.values[0]; // Keep the total amount the same
+        } else if (i === index + 1) {
+          return updatedCheckedItems[i - 1] ? splitValue : 0; // Set to zero if unchecked
+        } else if (i > 0) {
+          return updatedCheckedItems[i - 1] ? splitValue : 0; // Update based on checked status
+        }
+        return v;
+      });
+  
+      // Update the parent component with the new values
       this.props.onChange(this.props.id, updatedValues);
+  
       return { checkedItems: updatedCheckedItems, values: updatedValues };
     });
   };
@@ -75,7 +93,7 @@ class TableRow extends React.Component {
             placeholder='Enter amount'
             onChange={this.handleChange}
             onBlur={this.handleBlur}
-            // value={values[0]}
+            value={values[0]}
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </th>
